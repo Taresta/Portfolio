@@ -1,0 +1,115 @@
+/* MQ: Need media queries */
+
+/* MQ */
+html {
+    
+    height: 100%;
+    font-size: 16px;
+    /* font-family: need to find; */
+    /* Coverge html and body for the height */
+   
+}
+/* Body has some values in pixels. MQ */
+body {
+    height: 100%;
+    font-family: "ff-scala-sans-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #204639;
+    margin : 0;
+}
+/* Parallax effect still in beta  */
+.parallax {
+    min-height: 1000px;
+    background-attachment: fixed;
+    background-size:cover;
+    /* background-position: center center; */
+    background-repeat: no-repeat;
+   
+}
+.parallax.first {
+    background-image: url(./images/bv7.jpg);
+}
+.parallax.second {
+    background-image: url(./images/bb2.jpg)
+}
+.parallax.third {
+    background-image: url(./images/bb3.jpg);
+}
+/* MQ */
+nav {
+    margin: 0 auto;
+	padding: 2em;
+	text-align: center;
+}
+/* MQ. Has some pixel values  */
+.navigation-list a {
+    color: #204639;
+    text-decoration: none;
+    font: 20px "ff-scala-sans-pro";
+    margin: 0px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+ nav.circleBehind a:before, nav.circleBehind a:after
+{
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border: 4px solid #204639;
+    transform: translateX(-50%) translateY(-50%) scale(0.8);
+    border-radius: 50%;
+    background: transparent;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: -1;
+}
+
+nav.circleBehind a:after
+{
+    border-width: 2px;
+    transition: all 0.4s;
+}
+
+nav.circleBehind a:hover:before
+{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+   
+
+}
+
+nav.circleBehind a:hover:after
+{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1.3);
+   
+
+} 
+
+/* MQ */
+h1 {
+    
+    color: white;
+    font-family: "modern-love-grunge", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #5A4B46;
+    margin: 100px 0 0 150px;
+    padding-top: 2rem;
+    font-size: 10vw;
+    
+
+}
+
+/* Pixel value here. MQ */
+#projects img  {
+    width: 300px;
+}
+
+
