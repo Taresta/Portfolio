@@ -2,12 +2,12 @@
     --main-color: #204639;
     --secondary-color: #5A4B46;
     --tertiary-color: #F2D8CE;
-    --quad-color: #F2D5ED;
+    --quad-color: #FBFAE8;
     --font-family-primary: "ff-scala-sans-pro", sans-serif;
     --font-family-secondary: "modern-love-grunge", sans-serif;
     --base-font-size: 16px;
     --base-font-weight: 400;
-    --background-first: url(./images/bv7.jpg);
+    --background-first: url(./images/bv8.jpg);
     --background-second: url(./images/bb2.jpg);
     --background-third: url(./images/bb3.jpg);
 }
@@ -26,7 +26,15 @@ body {
     font-style: normal;
     color: var(--main-color);
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "header header header header header header header header header header header header" 
+                        "main main main main main main main main main main main main"
+                       "footer footer footer footer footer footer footer footer footer footer footer footer";
+    
 }
+
 
 
 /* Parallax effect still in beta  */
@@ -39,6 +47,7 @@ body {
 
 .parallax.first {
     background-image: var(--background-first);
+    background-position: bottom;
 }
 
 .parallax.second {
@@ -54,89 +63,85 @@ body {
 .parallax.third {
     background-image: var(--background-third);
 }
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows:auto;
+   
+   
 
-/* MQ */
-nav {
-    margin: 0 auto;
-    padding: 2em;
-    text-align: center;
-}
-
-/* MQ. Has some pixel values  */
-.navigation-list a {
-    color: var(--main-color);
-    text-decoration: none;
-    font: 20px var(--font-family-primary);
-    margin: 0px 10px;
-    padding: 10px 10px;
-    position: relative;
-    z-index: 0;
-    cursor: pointer;
-}
-
-nav.circle-behind a::before,
-nav.circle-behind a::after {
-    position: absolute;
-    top: 22px;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    border: 4px solid var(--main-color);
-    transform: translateX(-50%) translateY(-50%) scale(0.8);
-    border-radius: 50%;
-    background: transparent;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: -1;
-}
-
-nav.circle-behind a::after {
-    border-width: 2px;
-    transition: all 0.4s;
-}
-
-nav.circle-behind a:hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1);
-}
-
-nav.circle-behind a:hover::after {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1.3);
 }
 
 /* MQ */
-h1 {
+header h1 {
     font-family: var(--font-family-secondary);
     font-weight: var(--base-font-weight);
     font-style: normal;
     background-image: linear-gradient(90deg, var(--secondary-color), #fff);
     color: transparent;
     background-clip: text;
-    -webkit-background-clip: text;
-    margin: 100px 0 0 150px;
-    padding-top: 2rem;
-    font-size: 10vw;
+    -webkit-background-clip: text; 
+    font-size: 3rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    grid-column: 2 / span 3;
+    grid-row: 1;
+   
 }
+/* MQ */
+nav {
+    text-align: center;
+    grid-column: 11 / span 2;
+    grid-row: 1;
+}
+
+/* MQ. Has some pixel values  */
+.navigation-list a {
+    display: block;
+    margin-top: 2rem;
+    color: var(--main-color);
+    text-decoration: none;
+    font: 20px var(--font-family-primary);
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
 
 /* Design for main can go below */
 /* Pixel value here. MQ */
-#self-introduction {
-    height: 500px;
+main {
+    grid-area: main;
 }
+#self-introduction {
+     padding: 3rem;
+    background-image: linear-gradient(90deg, var(--quad-color), #fff);
+}
+
 
 /* Use flexbox here: Like make the section a flexbox to set the p in the center???? */
 #self-introduction p {
     text-align: center;
+    font-size: 1.3rem;
+   
 }
-
 /* Design for project-card starts here */
 h2 {
     text-align: center;
     width: 100%;
+    font-size: 2rem;
 }
 
+/* .project-card {
+    display: flex;
+    max-width: 320px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5em;
+    background-color: white;
+    box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
+    transition: transform 0.8s ease, box-shadow 0.8s ease, background-color 0.8s ease;
+} */
 .project-card {
     display: flex;
     max-width: 320px;
@@ -147,7 +152,6 @@ h2 {
     box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
     transition: transform 0.8s ease, box-shadow 0.8s ease, background-color 0.8s ease;
 }
-
 .card-img {
     width: 100%;
     height: 200px;
@@ -187,4 +191,139 @@ h2 {
     box-shadow: 0 20px 30px 20px rgba(0,0,0,0.5);
     background-color: var(--quad-color);
     
+}
+
+.project-card a {
+    text-decoration: none;
+    border: 1px solid var( --tertiary-color);
+    border-radius: 15px;
+    padding: 0.7rem;
+    background-color: var( --tertiary-color);
+    margin: 0.5rem;
+    font: 20px var(--font-family-primary);
+    cursor: pointer;
+}
+
+footer {
+    grid-area: footer;
+}
+
+/* Media queries for mobile phones */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .parallax.first::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Change the color and transparency */
+        z-index: 1; /* Make sure the overlay is behind the content */
+    }
+    .parallax.first h1, .parallax.first nav {
+        position: relative;
+        z-index: 2; /* Keep the text and nav above the overlay */
+        color: white;
+    }
+    
+    header {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        text-align: center;
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    nav {
+        /* margin-top: 1rem; */
+        grid-column: 1;
+        grid-row: 2 / span 1;
+    }
+    .navigation-list a {
+        color:#fff;
+        font-size: 1.5rem;
+    } 
+
+
+    .parallax.first {
+        background-position: center center;
+
+    }
+   
+    #self-introduction p {
+        padding: 0.5rem;
+        font-size:1rem;
+       
+    }
+
+    .project-card {
+        max-width: 100%;
+    }
+}
+
+/* Media queries for tablets */
+@media (min-width: 601px) and (max-width: 992px) {
+    body {
+        font-size: 15px;
+        grid-template-columns: repeat(6, 1fr);
+       
+    }
+   
+    header {
+        grid-template-columns: repeat(6, 1fr);
+       
+    }
+    header h1 {
+       grid-column: 1 / span 2;
+       font-size: 2rem;
+    }
+    nav {
+        grid-column: 5 / span 2;
+        justify-self: end;
+        padding-right: 20px;
+
+    }
+    .navigation-list a {
+        font-size: 1.7rem;
+    } 
+    .project-card {
+        max-width: 45%;
+    }
+
+}
+
+@media (min-width: 993px) {
+    body {
+        font-size: 16px;
+        grid-template-columns: repeat(12, 1fr);
+       
+    }
+    header {
+        grid-template-columns: repeat(12, 1fr);
+       
+    }
+    header h1 {
+        grid-column: 2 / span 3;
+        font-size: 3rem;
+    }
+    nav {
+        text-align: center;
+        grid-column: 11 / span 2;
+        grid-row: 1;
+    }
+    .navigation-list a {
+        font-size: 2.5rem;
+    } 
+    .project-card {
+        max-width: 30%;
+    }
 }
