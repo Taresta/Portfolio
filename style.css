@@ -3,20 +3,19 @@
     --secondary-color: #5A4B46;
     --tertiary-color: #F2D8CE;
     --quad-color: #FBFAE8;
+    --pent-color: #842623;
     --font-family-primary: "ff-scala-sans-pro", sans-serif;
     --font-family-secondary: "modern-love-grunge", sans-serif;
+    --font-family-tertiary: "kewl-script", sans-serif;
+    --font-family-quad: "filosofia", serif;
     --base-font-size: 16px;
+    --max-font-size: 24px;
     --base-font-weight: 400;
     --background-first: url(./images/bv8.jpg);
     --background-second: url(./images/bb2.jpg);
     --background-third: url(./images/bb3.jpg);
 }
 
-/* MQ */
-html {
-    height: 100%;
-    font-size: var(--base-font-size);
-}
 
 /* Body has some values in pixels. MQ */
 body {
@@ -24,6 +23,7 @@ body {
     font-family: var(--font-family-primary);
     font-weight: var(--base-font-weight);
     font-style: normal;
+    font-size: clamp(var(--base-font-size), 1rem + 1vw, var(--max-font-size));
     color: var(--main-color);
     margin: 0;
     display: grid;
@@ -39,7 +39,7 @@ body {
 
 /* Parallax effect still in beta  */
 .parallax {
-    min-height: 1000px;
+    min-height: 100vh;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,27 +68,42 @@ header {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows:auto;
-   
-   
-
+    width: 100vw;
 }
 
+@keyframes backgroundChange {
+    0% {
+        background-image: linear-gradient(90deg, var(--secondary-color), #fff);
+    }
+    100% {
+        background-image: linear-gradient(90deg, var(--secondary-color), var(--secondary-color));
+    }
+}
 /* MQ */
 header h1 {
     font-family: var(--font-family-secondary);
     font-weight: var(--base-font-weight);
     font-style: normal;
-    background-image: linear-gradient(90deg, var(--secondary-color), #fff);
+    animation: backgroundChange 3s infinite; 
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text; 
-    font-size: 3rem;
+    font-size: clamp(var(--base-font-size), 1.85rem + 1vw, 48px);
     margin-top: 2rem;
     padding: 1rem;
     grid-column: 2 / span 3;
     grid-row: 1;
    
 }
+
+/* .sticky {
+    position: fixed;
+    top : 0;
+    width: 100%;
+    z-index: 1000;
+} */
+
+
 /* MQ */
 nav {
     text-align: center;
@@ -98,16 +113,39 @@ nav {
 
 /* MQ. Has some pixel values  */
 .navigation-list a {
+    position: relative;
+    overflow: hidden;
     display: block;
     margin-top: 2rem;
+    padding: 2px;
     color: var(--main-color);
     text-decoration: none;
-    font: 20px var(--font-family-primary);
-    font-size: 2.5rem;
+    font: 20px var(--font-family-secondary);
+    font-size: clamp(16px, 1rem + 1vw, 32px);
     cursor: pointer;
+    text-transform:uppercase;
+    transition: color 2s ease;
+   
 }
 
+.navigation-list a::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--pent-color);
+    transition: width 3s ease;
 
+}
+.navigation-list a:hover {
+    color: var(--pent-color);
+}
+.navigation-list a:hover::after {
+    width: 100%;
+}
 /* Design for main can go below */
 /* Pixel value here. MQ */
 main {
@@ -122,14 +160,14 @@ main {
 /* Use flexbox here: Like make the section a flexbox to set the p in the center???? */
 #self-introduction p {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: clamp(16px, 1rem + 1vw, 24px);
    
 }
 /* Design for project-card starts here */
 h2 {
     text-align: center;
     width: 100%;
-    font-size: 2rem;
+    font-size: clamp(16px, 1.5rem + 1vw, 36px);
 }
 
 /* .project-card {
@@ -159,7 +197,9 @@ h2 {
     background-position: center;
     background-size: cover;
 }
-
+.project-card h3 {
+    font-size: clamp(16px, 1.1rem + 1vw, 36px);
+}
 .project-card:nth-of-type(1) .card-img {
     background-image: url(./images/Projects/awakeFoxv2.jpg);
 }
@@ -200,7 +240,7 @@ h2 {
     padding: 0.7rem;
     background-color: var( --tertiary-color);
     margin: 0.5rem;
-    font: 20px var(--font-family-primary);
+    font-family: var(--font-family-primary);
     cursor: pointer;
 }
 
@@ -211,7 +251,7 @@ footer {
 /* Media queries for mobile phones */
 @media (max-width: 600px) {
     body {
-        font-size: 14px;
+        /* font-size: 14px; */
         grid-template-columns: 1fr;
         padding: 1rem;
     }
@@ -220,8 +260,9 @@ footer {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
+        padding-bottom: 15px;
         background-color: rgba(0, 0, 0, 0.5); /* Change the color and transparency */
         z-index: 1; /* Make sure the overlay is behind the content */
     }
@@ -237,7 +278,7 @@ footer {
     }
 
     header h1 {
-        font-size: 2rem;
+        /* font-size: 2rem; */
         text-align: center;
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
@@ -250,7 +291,7 @@ footer {
     }
     .navigation-list a {
         color:#fff;
-        font-size: 1.5rem;
+        /* font-size: 1.5rem; */
     } 
 
 
@@ -261,7 +302,7 @@ footer {
    
     #self-introduction p {
         padding: 0.5rem;
-        font-size:1rem;
+        /* font-size:1rem; */
        
     }
 
@@ -273,7 +314,7 @@ footer {
 /* Media queries for tablets */
 @media (min-width: 601px) and (max-width: 992px) {
     body {
-        font-size: 15px;
+        /* font-size: 15px; */
         grid-template-columns: repeat(6, 1fr);
        
     }
@@ -284,7 +325,7 @@ footer {
     }
     header h1 {
        grid-column: 1 / span 2;
-       font-size: 2rem;
+       /* font-size: 2rem; */
     }
     nav {
         grid-column: 5 / span 2;
@@ -293,7 +334,7 @@ footer {
 
     }
     .navigation-list a {
-        font-size: 1.7rem;
+        /* font-size: 1.7rem; */
     } 
     .project-card {
         max-width: 45%;
@@ -303,7 +344,7 @@ footer {
 
 @media (min-width: 993px) {
     body {
-        font-size: 16px;
+        /* font-size: 16px; */
         grid-template-columns: repeat(12, 1fr);
        
     }
@@ -313,7 +354,7 @@ footer {
     }
     header h1 {
         grid-column: 2 / span 3;
-        font-size: 3rem;
+        /* font-size: 3rem; */
     }
     nav {
         text-align: center;
@@ -321,7 +362,7 @@ footer {
         grid-row: 1;
     }
     .navigation-list a {
-        font-size: 2.5rem;
+        /* font-size: 2.5rem; */
     } 
     .project-card {
         max-width: 30%;

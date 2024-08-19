@@ -15,3 +15,14 @@ navLinks.forEach(link => {
 
     });
 });
+
+// const navBar = document.querySelector('.navigation-list');
+// const navBarOffset = navBar.offsetTop;
+// window.addEventListener('scroll', () =>{
+//     if (window.scrollY >= navBarOffset) {
+//         navBar.classList.add('sticky');
+//     }
+//     else {
+//         navBar.classList.remove('sticky');
+//     }
+// });
