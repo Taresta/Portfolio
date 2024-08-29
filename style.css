@@ -12,8 +12,8 @@
     --max-font-size: 24px;
     --base-font-weight: 400;
     --background-first: url(./images/bv8.jpg);
-    --background-second: url(./images/bb2.jpg);
-    --background-third: url(./images/bb3.jpg);
+    --background-second: url(./images/bv9.jpg);
+    --background-third: url(./images/bv10.jpg);
 }
 
 
@@ -88,8 +88,8 @@ header h1 {
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text; 
-    font-size: clamp(var(--base-font-size), 1.85rem + 1vw, 48px);
-    margin-top: 2rem;
+    font-size: clamp(var(--base-font-size), 1.85rem + 1vw, 3rem);
+    margin-top: 1.25rem;
     padding: 1rem;
     grid-column: 2 / span 3;
     grid-row: 1;
@@ -106,9 +106,20 @@ header h1 {
 
 /* MQ */
 nav {
+    position: fixed;
+    z-index: 1000;
+    top: 2vh;
+    right: 2vw;
+    width: 12vw;
+    height: 36vh;
     text-align: center;
-    grid-column: 11 / span 2;
-    grid-row: 1;
+    background-color: #A1D3A280;
+    border: 0.0625rem solid #A1D3A2;
+    border-radius: 50%;
+    padding: 1rem 2vw;
+    transition: top 3s ease, width 0.3s ease, height 0.3s ease;
+    /* grid-column: 11 / span 2;
+    grid-row: 1; */
 }
 
 /* MQ. Has some pixel values  */
@@ -116,12 +127,13 @@ nav {
     position: relative;
     overflow: hidden;
     display: block;
-    margin-top: 2rem;
-    padding: 2px;
+    margin-top: 1rem;
+    padding: 0.125rem;
     color: var(--main-color);
     text-decoration: none;
-    font: 20px var(--font-family-secondary);
-    font-size: clamp(16px, 1rem + 1vw, 32px);
+    text-align: center;
+    font-family: var(--font-family-secondary);
+    font-size: clamp(1rem, 1rem + 1vw, 2rem);
     cursor: pointer;
     text-transform:uppercase;
     transition: color 2s ease;
@@ -131,20 +143,23 @@ nav {
 .navigation-list a::after {
     content: "";
     position: absolute;
-    display: block;
+    display: inline-block;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
-    height: 2px;
+    height: 0.125rem;
     background-color: var(--pent-color);
-    transition: width 3s ease;
+    transition: width 2s ease;
 
 }
 .navigation-list a:hover {
     color: var(--pent-color);
-}
+
+    }
 .navigation-list a:hover::after {
-    width: 100%;
+    width: 70%;
+    
 }
 /* Design for main can go below */
 /* Pixel value here. MQ */
@@ -160,14 +175,14 @@ main {
 /* Use flexbox here: Like make the section a flexbox to set the p in the center???? */
 #self-introduction p {
     text-align: center;
-    font-size: clamp(16px, 1rem + 1vw, 24px);
+    font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
    
 }
 /* Design for project-card starts here */
 h2 {
     text-align: center;
     width: 100%;
-    font-size: clamp(16px, 1.5rem + 1vw, 36px);
+    font-size: clamp(1rem, 1.5rem + 1vw, 2.25rem);
 }
 
 /* .project-card {
@@ -182,25 +197,52 @@ h2 {
 } */
 .project-card {
     display: flex;
-    max-width: 320px;
+    max-width: 30%;
     flex-direction: column;
     align-items: center;
     border-radius: 0.5em;
     background-color: white;
     box-shadow: 0 29px 38px -15px rgb(0 0 0 / 43%);
-    transition: transform 0.8s ease, box-shadow 0.8s ease, background-color 0.8s ease;
+    transition: transform 0.3s ease, background-color 0.8s ease;
+}
+.project-card:hover {
+    transform: matrix(1.01, 0, -0.05, 1, 0, 0);
+    background-color: #ffffff90;
+
 }
 .card-img {
     width: 100%;
-    height: 200px;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
     border-radius: 0.3em;
     background-position: center;
     background-size: cover;
+    overflow: hidden; /* Ensures content does not overflow */
 }
+
+.card-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* .card-img {
+    width: 100%;
+    height: calc(width * 9 / 16);
+    border-radius: 0.3em;
+    background-position: center;
+    background-size: cover;
+} */
+
 .project-card h3 {
-    font-size: clamp(16px, 1.1rem + 1vw, 36px);
+    font-size: clamp(1rem, 1.1rem + 1vw, 2.25rem);
 }
-.project-card:nth-of-type(1) .card-img {
+/* .project-card:nth-of-type(1) .card-img {
     background-image: url(./images/Projects/awakeFoxv2.jpg);
 }
 
@@ -222,32 +264,179 @@ h2 {
 
 .project-card:nth-of-type(6) .card-img {
     background-image: url(./images/Projects/swanv2.jpg);
-}
+} */
 
-.project-card:active,
+/* .project-card:active,
 .project-card:focus
 {
     transform: scale(1.3);
-    box-shadow: 0 20px 30px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 1.25rem 1.875rem rgba(0,0,0,0.5);
     background-color: var(--quad-color);
     
-}
+} */
 
 .project-card a {
     text-decoration: none;
-    border: 1px solid var( --tertiary-color);
-    border-radius: 15px;
+    border: 0.0625rem solid var( --tertiary-color);
+    border-radius: 0.9375rem;
     padding: 0.7rem;
     background-color: var( --tertiary-color);
+    color: var(--main-color);
     margin: 0.5rem;
     font-family: var(--font-family-primary);
     cursor: pointer;
+    transition: background-color 2s ease, color 2s ease, transform 2s ease;
 }
 
+.project-card a:hover {
+    background-color: var(--main-color);
+    color: var(--quad-color);
+    transform:scale(1.05);
+}
+
+/* Style for the modal goes below */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);;
+    transition: opacity 3s ease;
+}
+/* Style for the modal ends here */
+.modal-content {
+    background-color: #fefefe;
+    margin: 2% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: scroll;
+
+    /* Add a box shadow for better visibility */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.modal-img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5em;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+} 
+
+aside {
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--main-color);
+    font-family: var(--font-family-primary);
+    background-color: var(--quad-color);
+}
+#skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap:1rem;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--secondary-color); 
+    
+}
+.skill {
+    max-width: 80%;
+    display:flex;
+    max-height: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--quad-color);
+    border-radius:0.5rem;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, max-height 2s ease;
+    overflow: hidden;
+    padding: 1rem;
+}
+.skill img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+.skill p {
+    margin: 0;
+    font-size: clamp(1rem, 1rem + 1vw, 1.25rem);
+    font-family: var(--font-family-primary);
+    color: var(--text-color);
+}
+
+.skill:hover {
+    transform: scale(1.05);
+}
 footer {
     grid-area: footer;
 }
 
+.footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 2rem;
+    text-align: center;
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+    font-family: var(--font-family-primary);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+.footer-section p,
+.footer-section a {
+    font-family: var(--font-family-quad);
+    font-size: clamp(1rem, 1rem + 1vw, 1.2rem);
+    color: var(--main-color);
+    text-decoration: none;
+    margin: 0.5rem 0;
+}
+.footer-section a:hover {
+    text-decoration: underline;
+}
+.footer-section img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+}
+.legal-info p {
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+}
+
+.legal-info a {
+    font-size: 0.875rem;
+}
 /* Media queries for mobile phones */
 @media (max-width: 600px) {
     body {
@@ -255,14 +444,26 @@ footer {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
+    .parallax {
+        min-height: auto;
+        background-attachment:scroll;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+    .parallax.first {
+        position: relative;
+        background-position: center center;
+    }
+   
     .parallax.first::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        padding-bottom: 15px;
+        width: 100%;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.5); /* Change the color and transparency */
         z-index: 1; /* Make sure the overlay is behind the content */
     }
@@ -271,7 +472,15 @@ footer {
         z-index: 2; /* Keep the text and nav above the overlay */
         color: white;
     }
-    
+    .parallax.second {
+        background-image: none;
+        background:#F2D8CE;
+    }
+    .parallax.third {
+        background-position: center center;
+
+    }
+   
     header {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 2fr;
@@ -286,6 +495,9 @@ footer {
 
     nav {
         /* margin-top: 1rem; */
+        background:none;
+        border: none;
+        width: 100vw;
         grid-column: 1;
         grid-row: 2 / span 1;
     }
@@ -293,23 +505,35 @@ footer {
         color:#fff;
         /* font-size: 1.5rem; */
     } 
-
-
-    .parallax.first {
-        background-position: center center;
-
+   .navigation-list a:hover::after {
+        width: 30%;
+   }
+   #self-introduction p {
+    padding: 0.5rem;
+    /* font-size:1rem; */
     }
-   
-    #self-introduction p {
-        padding: 0.5rem;
-        /* font-size:1rem; */
-       
-    }
-
     .project-card {
         max-width: 100%;
     }
+    .project-card:hover {
+        transform: none;
+    }
+    .skill {
+        max-height: 100%;
+        padding: 1rem;
+    }
+    .skill img {
+        max-width: 50%
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+    .footer-section {
+        margin-bottom: 1.5rem;
+    }
 }
+  
 
 /* Media queries for tablets */
 @media (min-width: 601px) and (max-width: 992px) {
@@ -328,21 +552,24 @@ footer {
        /* font-size: 2rem; */
     }
     nav {
-        grid-column: 5 / span 2;
-        justify-self: end;
-        padding-right: 20px;
-
+       width: 20vw;
+       height:35vh;
+       top: 30vh;
     }
-    .navigation-list a {
-        /* font-size: 1.7rem; */
-    } 
+   
     .project-card {
         max-width: 45%;
     }
-
+    
+    .skill {
+        max-height: 80%;
+    }
+    .skill img {
+        max-width: 70%
+    }
 }
 
-@media (min-width: 993px) {
+@media (min-width: 993px) and (max-width: 1440px){
     body {
         /* font-size: 16px; */
         grid-template-columns: repeat(12, 1fr);
@@ -356,15 +583,11 @@ footer {
         grid-column: 2 / span 3;
         /* font-size: 3rem; */
     }
-    nav {
-        text-align: center;
-        grid-column: 11 / span 2;
-        grid-row: 1;
-    }
-    .navigation-list a {
-        /* font-size: 2.5rem; */
-    } 
+    
     .project-card {
         max-width: 30%;
+    }
+    .skill {
+        padding: 2rem;
     }
 }

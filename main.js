@@ -16,6 +16,27 @@ navLinks.forEach(link => {
     });
 });
 
+document.querySelectorAll('.learn-more').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const modalID = this.getAttribute('data-modal');
+        document.getElementById(modalID).style.display = 'block';
+    });
+});
+
+document.querySelectorAll('.close').forEach(span => {
+    span.addEventListener('click', function() {
+        this.parentElement.parentElement.style.display = 'none';
+    });
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+    }
+});
+
+
 // const navBar = document.querySelector('.navigation-list');
 // const navBarOffset = navBar.offsetTop;
 // window.addEventListener('scroll', () =>{
