@@ -15,9 +15,9 @@ To set up this project locally:
    ```bash
    git clone https://github.com/Taresta/Portfolio.git
 ## Technologies
--HTML5
--CSS3
--JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ##License
 This project is licensed under the MIT license.
