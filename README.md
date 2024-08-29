@@ -4,10 +4,10 @@
 This project is a personal portfolio project that showcases the skills, projects, and contact information of Paradox Shadow. 
 
 ##Features
--Responsive design
--Skill Showcase
--Project Gallery
--Contact Form
+- Responsive design
+- Skill Showcase
+- Project Gallery
+- Contact Form
 
 ##Installation
 To set up this project locally: 
