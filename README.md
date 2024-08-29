@@ -1,15 +1,15 @@
-#Personal Portfolio Project
+# Personal Portfolio Project
 
-##Description
+## Description
 This project is a personal portfolio project that showcases the skills, projects, and contact information of Paradox Shadow. 
 
-##Features
+## Features
 - Responsive design
 - Skill Showcase
 - Project Gallery
 - Contact Form
 
-##Installation
+## Installation
 To set up this project locally: 
 1. Clone the repository:
    ```bash
@@ -19,7 +19,7 @@ To set up this project locally:
 - CSS3
 - JavaScript
 
-##License
+## License
 This project is licensed under the MIT license.
 
    
